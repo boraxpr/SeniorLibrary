@@ -1,7 +1,8 @@
 # SeniorLibrary
-Naipawat Poolsawat
-Nohrarit Saengsukhiran
-Katesudarad Saikate
+# Group 21
+*    Naipawat Poolsawat
+*    Nohrarit Saengsukhiran
+*    Katesudarad Saikate
 ## Senior Project Library Website for Senior Project Digital Library System
 #### Login
 ![alt text](https://raw.githubusercontent.com/boraxpr/SeniorLibrary/main/Log%20in.png)
