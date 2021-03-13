@@ -1,0 +1,50 @@
+@page
+@model SeniorLibrary.Pages.Requests.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Entrying</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Entrying.ID" />
+            <div class="form-group">
+                <label asp-for="Entrying.SubmittorEmail" class="control-label"></label>
+                <input asp-for="Entrying.SubmittorEmail" class="form-control" />
+                <span asp-validation-for="Entrying.SubmittorEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Entrying.ProjectName" class="control-label"></label>
+                <input asp-for="Entrying.ProjectName" class="form-control" />
+                <span asp-validation-for="Entrying.ProjectName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Entrying.Category" class="control-label"></label>
+                <input asp-for="Entrying.Category" class="form-control" />
+                <span asp-validation-for="Entrying.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Entrying.SubmittedDate" class="control-label"></label>
+                <input asp-for="Entrying.SubmittedDate" class="form-control" />
+                <span asp-validation-for="Entrying.SubmittedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
