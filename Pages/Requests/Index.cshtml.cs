@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using SeniorLibrary.Data;
 using SeniorLibrary.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SeniorLibrary.Pages.Requests
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly SeniorLibrary.Data.SeniorLibraryContext _context;
