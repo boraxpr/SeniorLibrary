@@ -12,7 +12,7 @@ using SeniorLibrary.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using MySql.Data.MySqlClient;
 namespace SeniorLibrary
 {
     public class Startup
@@ -27,14 +27,15 @@ namespace SeniorLibrary
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           // services.AddCors();
+          //  services.AddTransient<MySqlConnection>(_ => new MySqlConnection(Configuration["ConnectionStrings:SeniorLibraryContext"]));
             services.AddDbContext<SeniorLibraryContext>(options =>
-                options.UseSqlite(
+                options.UseMySql(
                     Configuration.GetConnectionString("SeniorLibraryContext")));
-            services.AddDatabaseDeveloperPageExceptionFilter();
+            //services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<SeniorLibraryContext>();
             services.AddRazorPages();
-            
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.
