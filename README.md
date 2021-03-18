@@ -1,4 +1,6 @@
 # SeniorLibrary
+Required .NET Core, MySQL Community(Preferred)
+After install MySQL. Create a root user password=6501. Create a database name "seniorlib".
 # Group 21
 *    Naipawat Poolsawat
 *    Nohrarit Saengsukhiran
