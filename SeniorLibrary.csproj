@@ -34,4 +34,13 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\greenstone_logo.jpg" />
+    <None Include="wwwroot\images\search.png" />
+  </ItemGroup>
+
 </Project>
