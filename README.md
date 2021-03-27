@@ -35,9 +35,9 @@ SeniorLibrary\users.json
 #### Register via user.json (Look for more info @ \Data\ContextSeed.cs
 
 #### /Roles
-![alt text](https://raw.githubusercontent.com/boraxpr/SeniorLibrary/main/Roles.png)
+![alt text](https://raw.githubusercontent.com/boraxpr/SeniorLibrary/main/roles.png)
 
 #### /UserRoles
-![alt text](https://raw.githubusercontent.com/boraxpr/SeniorLibrary/main/UserRoles.png)
+![alt text](https://raw.githubusercontent.com/boraxpr/SeniorLibrary/main/userroles.png)
 
 
