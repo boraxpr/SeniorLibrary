@@ -25,8 +25,19 @@ SeniorLibrary\users.json
 ### /Requests/Create
 ![alt text](https://raw.githubusercontent.com/boraxpr/SeniorLibrary/main/Create%20requests.png)
 
+### /Requests/Edit?id=${EntryingID}
+![alt text](https://raw.githubusercontent.com/boraxpr/SeniorLibrary/main/Edit.png)
+
+### /Requests/Details?id=${EntryingID}
+![alt text](https://raw.githubusercontent.com/boraxpr/SeniorLibrary/main/details.png)
+
 #### Admin
-#### Register via user.json
+#### Register via user.json (Look for more info @ \Data\ContextSeed.cs
+
+#### /Roles
+![alt text](https://raw.githubusercontent.com/boraxpr/SeniorLibrary/main/Roles.png)
 
 #### /UserRoles
-![alt text](https://raw.githubusercontent.com/boraxpr/SeniorLibrary/main/Register.png)
+![alt text](https://raw.githubusercontent.com/boraxpr/SeniorLibrary/main/UserRoles.png)
+
+
