@@ -10,28 +10,34 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.13" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.13" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.13" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.13" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.13" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="3.1.13" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.13">
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.13" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.13">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="3.1.13" />
-    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="3.1.13" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="3.1.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration" Version="3.1.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Contracts" Version="3.1.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Core" Version="3.1.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore" Version="3.1.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Templating" Version="3.1.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Utils" Version="3.1.5" />
     <PackageReference Include="MySql.Data" Version="8.0.23" />
     <PackageReference Include="MySqlConnector" Version="0.69.10" />
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.4" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>

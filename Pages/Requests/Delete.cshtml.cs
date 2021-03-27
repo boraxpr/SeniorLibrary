@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace SeniorLibrary.Pages.Requests
 {
+    [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
         private readonly SeniorLibrary.Data.SeniorLibraryContext _context;

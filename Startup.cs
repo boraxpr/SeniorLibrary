@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
@@ -33,8 +32,10 @@ namespace SeniorLibrary
                 options.UseMySql(
                     Configuration.GetConnectionString("SeniorLibraryContext")));
             //services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<SeniorLibraryContext>();
+           services.AddIdentity<IdentityUser,IdentityRole>()
+               .AddEntityFrameworkStores<SeniorLibraryContext>()
+               .AddDefaultUI()
+               .AddDefaultTokenProviders();
             services.AddRazorPages();
             services.Configure<IdentityOptions>(options =>
             {
@@ -75,7 +76,7 @@ namespace SeniorLibrary
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseMigrationsEndPoint();
+              // app.UseMigrationsEndPoint();
             }
             else
             {
