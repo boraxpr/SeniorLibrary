@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MySql.Data.MySqlClient;
+using SeniorLibrary.Models;
+
 namespace SeniorLibrary
 {
     public class Startup
@@ -32,7 +34,7 @@ namespace SeniorLibrary
                 options.UseMySql(
                     Configuration.GetConnectionString("SeniorLibraryContext")));
             //services.AddDatabaseDeveloperPageExceptionFilter();
-           services.AddIdentity<IdentityUser,IdentityRole>()
+           services.AddIdentity<ApplicationUser, IdentityRole>()
                .AddEntityFrameworkStores<SeniorLibraryContext>()
                .AddDefaultUI()
                .AddDefaultTokenProviders();

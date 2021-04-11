@@ -7,9 +7,9 @@
 <div style="text-align: center">
     <a href="http://localhost:8383/greenstone3/library/collection/"><img src="images/greenstone_logo.jpg" style="width:300px;height:200px;"></a>
 </div>
-    <p>
-        <a asp-page="Create">Create New</a>
-    </p>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
     <table class="table">
         <thead>
             <tr>
@@ -31,25 +31,28 @@
         <tbody>
             @foreach (var item in Model.Entrying)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SubmittorEmail)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProjectName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Category)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SubmittedDate)
-                    </td>
-                    <td>
-                        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                        <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                        <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-                    </td>
-                </tr>
+                if (User.Identity.Name.Equals(item.SubmittorEmail.Split("@")[0]) || User.IsInRole("Admin"))
+                { 
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubmittorEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubmittedDate)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+                }
             }
         </tbody>
     </table>

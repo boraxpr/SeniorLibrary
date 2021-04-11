@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace SeniorLibrary.Data
 {
-    public class SeniorLibraryContext : IdentityDbContext
+    public class SeniorLibraryContext : IdentityDbContext<ApplicationUser>
     {
         public SeniorLibraryContext (
             DbContextOptions<SeniorLibraryContext> options)
@@ -17,6 +17,7 @@ namespace SeniorLibrary.Data
         }
 
         public DbSet<SeniorLibrary.Models.Entrying> Entrying { get; set; }
+        public DbSet<SeniorLibrary.Models.Book> Book { get; set; }
     }
 
 }

@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SeniorLibrary.Data;
+using SeniorLibrary.Models;
 
 namespace SeniorLibrary
 {
@@ -24,7 +25,7 @@ namespace SeniorLibrary
                 try
                 {
                     var context = services.GetRequiredService<SeniorLibraryContext>();
-                    var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     await ContextSeed.SeedRolesAsync(userManager, roleManager);
                     await ContextSeed.SeedSuperAdminAsync(userManager, roleManager);

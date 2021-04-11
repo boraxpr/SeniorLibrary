@@ -7,7 +7,9 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>UserId</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Student ID</th>
             <th>Email</th>
             <th>Roles</th>
         </tr>
@@ -16,7 +18,9 @@
         @foreach (var user in Model.userRolesViewModel)
         {
         <tr>
-            <td>@user.UserId</td>
+            <td>@user.FirstName</td>
+            <td>@user.LastName</td>
+            <td>@user.StudentID</td>
             <td>@user.Email</td>
             <td>@string.Join(" , ", user.Roles.ToList())</td>
         </tr>

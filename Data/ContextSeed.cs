@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using SeniorLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,22 +10,32 @@ namespace SeniorLibrary.Data
 {
     public class ContextSeed
     {
+        public static async Task SeedBookAsync(SeniorLibrary.Data.SeniorLibraryContext _context)
+        {
+            Book book = new();
+            _context.Book.Add(book);
+            await _context.SaveChangesAsync();
+        }
         public enum Roles
         {
             Admin,
-            Basic
+            Student,
+            Staff,
+            Lecturer
         }
-        public static async Task SeedRolesAsync(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task SeedRolesAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             //Seed Roles
             await roleManager.CreateAsync(new IdentityRole(Roles.Admin.ToString()));
-            await roleManager.CreateAsync(new IdentityRole(Roles.Basic.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Roles.Student.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Roles.Staff.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Roles.Lecturer.ToString()));
         }
 
-        public static async Task SeedSuperAdminAsync(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task SeedSuperAdminAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             //Seed Default User
-            var defaultUser = new IdentityUser
+            var defaultUser = new ApplicationUser
             {
                 UserName = "ictadmin",
                 Email = "ictadmin@gmail.com",
@@ -39,27 +50,32 @@ namespace SeniorLibrary.Data
                     // id, password
                     await userManager.CreateAsync(defaultUser, "123Pa$$word.");
                     await userManager.AddToRoleAsync(defaultUser, Roles.Admin.ToString());
-                    await userManager.AddToRoleAsync(defaultUser, Roles.Basic.ToString());
                 }
 
             }
         }
 
-        public static async Task AddUserAsync(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task AddUserAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             string text = await System.IO.File.ReadAllTextAsync("users.json");
             using JsonDocument doc = JsonDocument.Parse(text);
             JsonElement root = doc.RootElement;
-            //var users = new List<IdentityUser>();
             //Seed Users from Json
             foreach (var item in root.EnumerateArray())
             {
                 string email = item.GetProperty("email").ToString();
                 string password = item.GetProperty("password").ToString();
-                var defaultUser = new IdentityUser
+                string firstName = item.GetProperty("firstname").ToString();
+                string lastName = item.GetProperty("lastname").ToString();
+                int studentID = int.Parse(item.GetProperty("studentid").ToString());
+                string role = item.GetProperty("role").ToString();
+                var defaultUser = new ApplicationUser
                 {
                     UserName = email.Split("@")[0],
                     Email = email,
+                    FirstName = firstName,
+                    LastName = lastName,
+                    StudentID = studentID,
                     EmailConfirmed = true,
                     PhoneNumberConfirmed = true
                 };
@@ -69,8 +85,11 @@ namespace SeniorLibrary.Data
                     if (user == null)
                     {
                         // id, password
-                        await userManager.CreateAsync(defaultUser, password);
-                        await userManager.AddToRoleAsync(defaultUser, Roles.Basic.ToString());
+                        if (Enum.IsDefined(typeof(Roles), role))
+                        {
+                            await userManager.CreateAsync(defaultUser, password);
+                            await userManager.AddToRoleAsync(defaultUser, role);
+                        }
                     }
 
                 }

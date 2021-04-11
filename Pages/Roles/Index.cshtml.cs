@@ -7,22 +7,23 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using SeniorLibrary.Models;
 
 namespace SeniorLibrary.Pages.Roles
 {
     [Authorize(Roles = "Admin")]
     public class IndexModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        public IndexModel(UserManager<IdentityUser> userManager
+        public IndexModel(UserManager<ApplicationUser> userManager
             , RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
         }
 
-        public IList<IdentityUser> users { get; set; }
+        public IList<ApplicationUser> users { get; set; }
         public IList<IdentityRole> roles { get; set; }
         public async Task OnGetAsync()
         {

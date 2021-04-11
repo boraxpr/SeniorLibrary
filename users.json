@@ -1,14 +1,34 @@
 [
     {
         "email" : "naipawat.poo@student.mahidol.ac.th",
-        "password" : "password"
+		"firstname" : "Naipawat",
+		"lastname" : "Poolsawat",
+        "password" : "password",
+		"role" : "Student",
+		"studentid" : "6088120"
     },
     {
         "email" : "nohrarit.sae@student.mahidol.ac.th",
-        "password" : "password"
+		"firstname" : "Nohrarit",
+		"lastname" : "Saengsukhiran",
+        "password" : "password",
+		"role" : "Student",
+		"studentid" : "6088083"
     },
     {
         "email" : "katesudarad.sai@student.mahidol.ac.th",
-        "password" : "password"
-    }
+		"firstname" : "Katesudarad",
+		"lastname" : "Saikate",
+        "password" : "password",
+		"role" : "Student",
+		"studentid" : "5988021"
+    },
+	{
+		"email" : "pagaporn.pen@mahidol.ac.th",
+		"firstname" : "Pagaporn",
+		"lastname" : "Pengsart",
+		"password" : "password",
+		"role" : "Lecturer",
+		"studentid" : "0"
+	}
 ]
