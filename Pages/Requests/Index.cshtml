@@ -4,55 +4,120 @@
 @{
     ViewData["Title"] = "Index";
 }
+
+
 <div style="text-align: center">
     <a href="http://localhost:8383/greenstone3/library/collection/"><img src="images/greenstone_logo.jpg" style="width:300px;height:200px;"></a>
 </div>
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Entrying[0].SubmittorEmail)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Entrying[0].ProjectName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Entrying[0].Category)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Entrying[0].SubmittedDate)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Entrying)
-            {
-                if (User.Identity.Name.Equals(item.SubmittorEmail.Split("@")[0]) || User.IsInRole("Admin"))
-                { 
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SubmittorEmail)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProjectName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SubmittedDate)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-                </td>
-            </tr>
+<div class="table-responsive ">
+
+    <table id="mytable" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Entrying[0].SubmittorEmail)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Entrying[0].ProjectName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Entrying[0].Category)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Entrying[0].SubmittedDate)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Entrying)
+                {
+                    if (User.Identity.Name.Equals(item.SubmittorEmail.Split("@")[0]) || User.IsInRole("Admin"))
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SubmittorEmail)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProjectName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Category)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SubmittedDate)
+                            </td>
+                            <td>
+                                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                            </td>
+                        </tr>
+                    }
                 }
-            }
-        </tbody>
-    </table>
+            </tbody>
+        </table> 
+    </div>
+
+        <script type="text/javascript" src="~/MDB/js/mdb.min.js"></script>
+
+        <script type="text/javascript" src="~/MDB/js/addons/datatables.min.js"></script>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.5"></script>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
+
+
+        <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+
+        <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+        @section Scripts {
+
+
+
+            <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+            <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+
+            <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
+            <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+
+            <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
+
+
+
+
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+
+            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+
+            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
+
+
+
+            <script type="text/javascript" class="init">
+
+
+
+                $(document).ready(function () {
+
+                    $('#mytable').DataTable();
+
+                });
+
+
+
+
+            </script>
+
+
+
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+        }

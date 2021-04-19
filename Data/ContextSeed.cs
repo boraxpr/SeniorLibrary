@@ -2,6 +2,7 @@
 using SeniorLibrary.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -10,12 +11,6 @@ namespace SeniorLibrary.Data
 {
     public class ContextSeed
     {
-        public static async Task SeedBookAsync(SeniorLibrary.Data.SeniorLibraryContext _context)
-        {
-            Book book = new();
-            _context.Book.Add(book);
-            await _context.SaveChangesAsync();
-        }
         public enum Roles
         {
             Admin,
@@ -53,6 +48,41 @@ namespace SeniorLibrary.Data
                 }
 
             }
+        }
+
+        public static async Task AddBookAsync(SeniorLibraryContext context)
+        {
+            System.Diagnostics.Debug.WriteLine("Adding Books");
+            string currentDir = Directory.GetCurrentDirectory();
+            string bookRoot = currentDir + @"/book";
+            string addedRoot = bookRoot + @"/Added";
+            string[] entries = Directory.GetFiles(bookRoot);
+            Console.WriteLine(currentDir);
+            foreach (string filePath in entries)
+            {
+                string fileName = Path.GetFileName(filePath);
+                //Prepare tools needed for filereading
+                //Console.WriteLine(Path.GetFileName(filePath));
+                byte[] fileContent = null;
+                FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+                BinaryReader binaryReader = new System.IO.BinaryReader(fs);
+                long byteLength = new FileInfo(filePath).Length;
+                fileContent = binaryReader.ReadBytes((Int32)byteLength);
+                fs.Close();
+                fs.Dispose();
+                binaryReader.Close();
+                //Create a book object
+                var book = new Book();
+                book.Name = fileName;
+                book.DataFiles = fileContent;
+                book.CreatedOn = DateTime.Now;
+                //Insert to database
+                File.Move(filePath, addedRoot + @"/" + fileName);
+                await context.Book.AddAsync(book);
+                await context.SaveChangesAsync();
+                System.Diagnostics.Debug.WriteLine("Successfully Added"+fileName+"!! to the database");
+            }
+            System.Diagnostics.Debug.WriteLine("DONE !!!!!!!!!!!!!!");
         }
 
         public static async Task AddUserAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)

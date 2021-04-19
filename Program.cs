@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -24,6 +25,7 @@ namespace SeniorLibrary
                 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
                 try
                 {
+                    System.Diagnostics.Debug.WriteLine("Program Started");
                     var context = services.GetRequiredService<SeniorLibraryContext>();
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
@@ -31,6 +33,7 @@ namespace SeniorLibrary
                     await ContextSeed.SeedSuperAdminAsync(userManager, roleManager);
                     //Must have users.json in project folder!
                     await ContextSeed.AddUserAsync(userManager, roleManager);
+                    await ContextSeed.AddBookAsync(context);
                 }
                 catch (Exception ex)
                 {

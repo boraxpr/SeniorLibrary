@@ -12,8 +12,7 @@ namespace SeniorLibrary.Models
         public int ID { get; set; }
         [MaxLength(100)]
         public string Name { get; set; }
-        [MaxLength]
         public byte[] DataFiles { get; set; }
-        public DateTime? CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
 }

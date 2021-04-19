@@ -218,6 +218,27 @@ namespace SeniorLibrary.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("SeniorLibrary.Models.Book", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<byte[]>("DataFiles")
+                        .HasColumnType("longblob");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
+                        .HasMaxLength(100);
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Book");
+                });
+
             modelBuilder.Entity("SeniorLibrary.Models.Entrying", b =>
                 {
                     b.Property<int>("ID")
