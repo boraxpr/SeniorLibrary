@@ -5,31 +5,31 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Create a request</h1>
 
-<h4>Entrying</h4>
+<h4>Request a book</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Entrying.SubmittorEmail" class="control-label"></label>
-                <input asp-for="Entrying.SubmittorEmail" class="form-control" value="@User.Identity.Name@@student.mahidol.ac.th"/> 
+                <label asp-for="Entrying.SubmittorEmail" class="control-label">Student Email</label>
+                <input asp-for="Entrying.SubmittorEmail" class="form-control" value="@User.Identity.Name@@student.mahidol.ac.th" />
                 <span asp-validation-for="Entrying.SubmittorEmail" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Entrying.ProjectName" class="control-label"></label>
+                <label asp-for="Entrying.ProjectName" class="control-label">Book Name</label>
                 <input asp-for="Entrying.ProjectName" class="form-control" />
                 <span asp-validation-for="Entrying.ProjectName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Entrying.Category" class="control-label"></label>
-                <input asp-for="Entrying.Category" class="form-control" />
-                <span asp-validation-for="Entrying.Category" class="text-danger"></span>
+                <label asp-for="Entrying.BookAdvisor" class="control-label">Book Advisor</label>
+                <input asp-for="Entrying.BookAdvisor" class="form-control" />
+                <span asp-validation-for="Entrying.BookAdvisor" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Entrying.SubmittedDate" class="control-label"></label>
+                <label asp-for="Entrying.SubmittedDate" class="control-label">Request created on</label>
                 <input asp-for="Entrying.SubmittedDate" class="form-control" />
                 <span asp-validation-for="Entrying.SubmittedDate" class="text-danger"></span>
             </div>
@@ -38,6 +38,37 @@
             </div>
         </form>
     </div>
+    <div class="col-md-8">
+        <div class="table-responsive ">
+
+            <table id="mytable" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed" style="width:100%;background-color:white">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.books[0].Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.books[0].CreatedOn)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.books)
+                    {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                                </td>
+                            </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 
 
 </div>
@@ -46,6 +77,62 @@
     <a asp-page="Index">Back to List</a>
 </div>
 
+<script type="text/javascript" src="~/MDB/js/mdb.min.js"></script>
+
+<script type="text/javascript" src="~/MDB/js/addons/datatables.min.js"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.5"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 @section Scripts {
+
+
+
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
+
+
+
+    <script type="text/javascript" class="init">
+
+
+
+        $(document).ready(function () {
+
+            $('#mytable').DataTable();
+
+        });
+
+
+
+
+    </script>
+
+
+
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
 }

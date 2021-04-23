@@ -9,7 +9,7 @@ namespace SeniorLibrary.Models
         public int ID { get; set; }
         public string SubmittorEmail {get; set;}
         public string ProjectName { get; set; }
-        public string Category { get; set; }
+        public string BookAdvisor { get; set; }
         [DataType(DataType.Date)]
         public DateTime SubmittedDate {get; set;}
     }

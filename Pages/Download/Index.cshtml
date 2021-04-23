@@ -1,0 +1,89 @@
+﻿@page
+@model SeniorLibrary.Pages.Download.IndexModel
+@{
+    ViewData["Title"] = "Download";
+}
+<h1>Download Book</h1>
+<table id="mytable" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed" style="width:100%; background-color:white">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.books[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.books[0].CreatedOn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model.books)
+        {
+            <tr>
+                <td>@book.Name</td>
+                <td>@book.CreatedOn</td>
+                <td><a asp-page="./Download" asp-route-id="@book.ID">Download</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript" src="~/MDB/js/mdb.min.js"></script>
+
+<script type="text/javascript" src="~/MDB/js/addons/datatables.min.js"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.5"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+@section Scripts {
+
+
+
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
+
+
+
+    <script type="text/javascript" class="init">
+
+
+
+        $(document).ready(function () {
+
+            $('#mytable').DataTable();
+
+        });
+
+
+
+
+    </script>
+
+
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}

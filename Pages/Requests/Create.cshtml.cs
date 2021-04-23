@@ -22,14 +22,7 @@ namespace SeniorLibrary.Pages.Requests
 
         [BindProperty]
         public Entrying Entrying { get; set; }
-        public IEnumerable<Book> Book { get; set; }
-
-        //public async  Task IActionResult OnGet()
-        public IActionResult OnGet()
-        {
-            //Book = await _context.Book.ToListAsync();
-            return Page();
-        }
+        public IList<Book> books { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -38,11 +31,16 @@ namespace SeniorLibrary.Pages.Requests
             {
                 return Page();
             }
+            // Send email 
 
             _context.Entrying.Add(Entrying);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
+        }
+        public async Task OnGetAsync()
+        {
+            books = await _context.Book.ToListAsync();
         }
     }
 }

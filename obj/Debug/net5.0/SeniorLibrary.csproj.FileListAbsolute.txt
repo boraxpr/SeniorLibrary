@@ -203,3 +203,6 @@ C:\Users\tata-\SeniorLibrary\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstracti
 C:\Users\tata-\SeniorLibrary\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\tata-\SeniorLibrary\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\Users\tata-\SeniorLibrary\bin\Debug\net5.0\users.json
+C:\Users\tata-\SeniorLibrary\obj\Debug\net5.0\Razor\Pages\Download\Index.cshtml.g.cs
+C:\Users\tata-\SeniorLibrary\obj\Debug\net5.0\Razor\Pages\Download\Download.cshtml.g.cs
+C:\Users\tata-\SeniorLibrary\obj\Debug\net5.0\Razor\Pages\Upload\Index.cshtml.g.cs

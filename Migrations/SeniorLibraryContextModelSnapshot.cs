@@ -245,7 +245,7 @@ namespace SeniorLibrary.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Category")
+                    b.Property<string>("BookAdvisor")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ProjectName")

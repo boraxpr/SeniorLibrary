@@ -1,4 +1,26 @@
 ﻿<!DOCTYPE html>
+<style>
+    .jumbotron {
+        background-color: #454545;
+    }
+
+        .jumbotron .container {
+            z-index: 2;
+            position: relative;
+            background-size: cover;
+            height : 100%;
+            width : 100%;
+        }
+    video {
+        object-fit: cover;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow : hidden;
+    }
+</style>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -7,9 +29,12 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
+<body class="jumbotron-fluid jumbotron">
+    <video autoplay muted loop poster="">
+        <source src="~/video/video.mp4" type="video/mp4">
+    </video>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-3 fixed-top">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Requests/Index">SeniorLibrary</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -27,7 +52,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Requests/Index">Request book</a>
                             </li>
                             <li class="nav-item">
-                                <a href="http://localhost:8383/greenstone3/library/collection/"><img src="images/search.png" style="width:24px;height:24px;"></a>
+                                <a href="http://localhost:8383/greenstone3/library/collection/"><img src="~/images/search.png" style="width:24px;height:24px;"></a>
                             </li>
 
                         }
@@ -39,6 +64,31 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/UserRoles/Index">Users</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Upload/Index">Upload</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Download/Index">Download</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Lecturer"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Upload/Index">Upload</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Download/Index">Download</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Staff"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Upload/Index">Upload</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Download/Index">Download</a>
+                            </li>
+
                         }
                     </ul>
                     <partial name="_LoginPartial" />
@@ -46,13 +96,17 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
+    <div class="container embed-responsive">
+        <main role="main">
+            <div>
+                <div class="container">
+                    @RenderBody()
+                </div>
+            </div>
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted fixed-bottom" style="background-color:white">
         <div class="container">
             &copy; 2564 - SeniorLibrary - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
@@ -65,3 +119,16 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+<script>
+    function backgroundVideo() {
+
+        $("video source").each(function () {
+            var sourceFile = $(this).attr("data-src");
+            $(this).attr("src", sourceFile);
+            var video = this.parentElement;
+            video.load();
+        });
+
+    }
+    window.onload = backgroundVideo;
+</script>
