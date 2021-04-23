@@ -1,7 +1,7 @@
 # SeniorLibrary
 Required .NET Core, MySQL Community(Preferred)
-Create a root user password=6501. 
-Create a database name "seniorlib".
+<br>Create a root user password=6501. 
+<br>Create a database name "seniorlib".
 
 ## Admin identity
 Username : ictadmin
