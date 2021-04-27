@@ -23,24 +23,45 @@ namespace SeniorLibrary.Pages.Requests
         [BindProperty]
         public Entrying Entrying { get; set; }
         public IList<Book> books { get; set; }
+        public Book Book { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
-                return Page();
+                return RedirectToPage("./Create");
             }
-            // Send email 
+            if (!_context.Book.Any(info => info.Name == Entrying.ProjectName))
+            {
+                return RedirectToPage("./Create", new {msg = "error" });
+            }
+            if (Entrying.ProjectName.Contains('.'))
+            {
+                Entrying.ProjectName = Entrying.ProjectName.Split('.')[0];
+            }
 
             _context.Entrying.Add(Entrying);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             books = await _context.Book.ToListAsync();
+            Book = new Book();
+            Book.Name = "select from table =>";
+            if (id != null)
+            {
+                Book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
+                if (Book == null)
+                {
+                    return Page();
+                }
+            }
+
+            return Page();
         }
+
     }
 }
