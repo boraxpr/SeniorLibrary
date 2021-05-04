@@ -206,3 +206,4 @@ C:\Users\tata-\SeniorLibrary\bin\Debug\net5.0\users.json
 C:\Users\tata-\SeniorLibrary\obj\Debug\net5.0\Razor\Pages\Download\Index.cshtml.g.cs
 C:\Users\tata-\SeniorLibrary\obj\Debug\net5.0\Razor\Pages\Download\Download.cshtml.g.cs
 C:\Users\tata-\SeniorLibrary\obj\Debug\net5.0\Razor\Pages\Upload\Index.cshtml.g.cs
+C:\Users\tata-\SeniorLibrary\obj\Debug\net5.0\Razor\Pages\Test\Index.cshtml.g.cs

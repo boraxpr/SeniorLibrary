@@ -4,13 +4,7 @@
         background-color: #454545;
     }
 
-        .jumbotron .container {
-            z-index: 2;
-            position: relative;
-            background-size: cover;
-            height : 100%;
-            width : 100%;
-        }
+        .jumbotron .container { z-index: 2; position: relative; background-size: cover; height: 100%; width: 100%; }
     video {
         object-fit: cover;
         width: 100vw;
@@ -30,9 +24,10 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body class="jumbotron-fluid jumbotron">
+    
     <video autoplay muted loop poster="">
-        <source src="~/video/video.mp4" type="video/mp4">
-    </video>
+            <source src="~/video/library.mp4" type="video/mp4">
+        </video>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-3 fixed-top">
             <div class="container">
@@ -46,6 +41,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
+                        @* TEST
+                                <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Test/Index">Test</a>
+                            </li>
+                        *@
+
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
@@ -108,7 +109,7 @@
 
     <footer class="border-top footer text-muted fixed-bottom" style="background-color:white">
         <div class="container">
-            &copy; 2564 - SeniorLibrary - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2564 - SeniorLibrary @*- <a asp-area="" asp-page="/Privacy">Privacy</a>*@
         </div>
     </footer>
 

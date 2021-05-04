@@ -45,15 +45,18 @@
                 if (User.Identity.Name.Equals(item.SubmittorEmail.Split("@")[0]) || User.IsInRole("Admin"))
                 {
                     <tr>
-                        <td>
+                        <td class="SubmittorEmail">
                             @Html.DisplayFor(modelItem => item.SubmittorEmail)
                         </td>
+
                         <td>
                             @Html.DisplayFor(modelItem => item.ProjectName)
                         </td>
+
                         <td>
                             @Html.DisplayFor(modelItem => item.BookAdvisor)
                         </td>
+
                         <td>
                             @Html.DisplayFor(modelItem => item.SubmittedDate)
                         </td>
