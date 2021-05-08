@@ -9,8 +9,8 @@ using SeniorLibrary.Data;
 namespace SeniorLibrary.Migrations
 {
     [DbContext(typeof(SeniorLibraryContext))]
-    [Migration("20210414174724_AddBook")]
-    partial class AddBook
+    [Migration("20210508105417_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -247,7 +247,7 @@ namespace SeniorLibrary.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Category")
+                    b.Property<string>("BookAdvisor")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ProjectName")
@@ -262,6 +262,23 @@ namespace SeniorLibrary.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Entrying");
+                });
+
+            modelBuilder.Entity("SeniorLibrary.Models.Stat", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("DownloadedBooks")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("userName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Stat");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

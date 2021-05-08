@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SeniorLibrary.Migrations
 {
-    public partial class AddBook : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -73,12 +73,26 @@ namespace SeniorLibrary.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     SubmittorEmail = table.Column<string>(nullable: true),
                     ProjectName = table.Column<string>(nullable: true),
-                    Category = table.Column<string>(nullable: true),
+                    BookAdvisor = table.Column<string>(nullable: true),
                     SubmittedDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Entrying", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Stat",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    userName = table.Column<string>(nullable: true),
+                    DownloadedBooks = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Stat", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -247,6 +261,9 @@ namespace SeniorLibrary.Migrations
 
             migrationBuilder.DropTable(
                 name: "Entrying");
+
+            migrationBuilder.DropTable(
+                name: "Stat");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

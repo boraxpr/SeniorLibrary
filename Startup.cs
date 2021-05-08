@@ -39,6 +39,7 @@ namespace SeniorLibrary
                .AddDefaultUI()
                .AddDefaultTokenProviders();
             services.AddRazorPages();
+            services.AddHttpContextAccessor();
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.

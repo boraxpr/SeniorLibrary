@@ -18,6 +18,7 @@ namespace SeniorLibrary.Data
 
         public DbSet<SeniorLibrary.Models.Entrying> Entrying { get; set; }
         public DbSet<SeniorLibrary.Models.Book> Book { get; set; }
+        public DbSet<SeniorLibrary.Models.Stat> Stat { get; set; }
     }
 
 }
