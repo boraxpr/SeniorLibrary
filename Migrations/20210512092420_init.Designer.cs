@@ -9,8 +9,8 @@ using SeniorLibrary.Data;
 namespace SeniorLibrary.Migrations
 {
     [DbContext(typeof(SeniorLibraryContext))]
-    [Migration("20210508110217_init2")]
-    partial class init2
+    [Migration("20210512092420_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -226,6 +226,9 @@ namespace SeniorLibrary.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Advisor")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime(6)");
 
@@ -235,6 +238,9 @@ namespace SeniorLibrary.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
                         .HasMaxLength(100);
+
+                    b.Property<int>("downloadCount")
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
 

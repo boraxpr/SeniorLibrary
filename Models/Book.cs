@@ -14,5 +14,7 @@ namespace SeniorLibrary.Models
         public string Name { get; set; }
         public byte[] DataFiles { get; set; }
         public DateTime CreatedOn { get; set; }
+        public string Advisor { get; set; }
+        public int downloadCount { get; set; }
     }
 }

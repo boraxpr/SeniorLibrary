@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 
-namespace SeniorLibrary.Pages.Download 
+namespace SeniorLibrary.Pages.Requests
 { 
     public class DownloadModel : PageModel
     {

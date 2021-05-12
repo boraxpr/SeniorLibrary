@@ -58,7 +58,9 @@ namespace SeniorLibrary.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 100, nullable: true),
                     DataFiles = table.Column<byte[]>(nullable: true),
-                    CreatedOn = table.Column<DateTime>(nullable: false)
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    Advisor = table.Column<string>(nullable: true),
+                    downloadCount = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

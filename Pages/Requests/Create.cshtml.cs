@@ -40,7 +40,6 @@ namespace SeniorLibrary.Pages.Requests
             {
                 Entrying.ProjectName = Entrying.ProjectName.Split('.')[0];
             }
-
             _context.Entrying.Add(Entrying);
             await _context.SaveChangesAsync();
 

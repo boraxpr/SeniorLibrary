@@ -64,6 +64,14 @@
                             <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                             <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
                             <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a> |
+                            @if (User.IsInRole("Student"))
+                            {
+                                <a asp-page="./Download" asp-route-id="@item.ID">Download |</a> 
+                            } 
+                            @if (User.IsInRole("Lecturer"))
+                            {
+                                <a asp-page="./Delete" asp-route-id="@item.ID">Approve |</a> 
+                            } 
                         </td>
                     </tr>
                 }

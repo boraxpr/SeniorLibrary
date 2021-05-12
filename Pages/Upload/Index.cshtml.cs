@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using SeniorLibrary.Models;
 
 namespace SeniorLibrary.Pages.Upload
@@ -17,6 +18,9 @@ namespace SeniorLibrary.Pages.Upload
         {
             _context = context;
         }
+        [BindProperty]
+        public Book Book { get; set; }
+        public IList<Book> books { get; set; }
         public IActionResult Index()
         {
             return Page();
@@ -36,7 +40,7 @@ namespace SeniorLibrary.Pages.Upload
                     var book = new Book();
                     book.Name = fileName;
                     book.CreatedOn = DateTime.Now;
-
+                    book.Advisor = Book.Advisor;
                     using (var target = new MemoryStream())
                     {
                         files.CopyTo(target);
@@ -49,6 +53,11 @@ namespace SeniorLibrary.Pages.Upload
                 }
             }
             return Redirect("/Download");
+        }
+        public async Task<IActionResult> OnGetAsync()
+        {
+            books = await _context.Book.ToListAsync();
+            return Page();
         }
     }
 }
