@@ -9,15 +9,18 @@
     <div class="col-md-5">
         <form method="post" enctype="multipart/form-data" asp-action="Index">
             <div class="form-group">
+                <div class="col-md-5">
+                    <label asp-for="Book.Advisor" class="control-label">Book Advisor</label>
+                    <input asp-for="Book.Advisor" class="form-control" />
+                    <span asp-validation-for="Book.Advisor" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-md-10">
                     <input class="form-control" name="files" type="file" />
                 </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Book.Advisor" class="control-label">Book Advisor</label>
-                <input asp-for="Book.Advisor" class="form-control"/>
-                <span asp-validation-for="Book.Advisor" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <div class="col-md-10">
                     <input class="btn btn-success" type="submit" value="Upload" />

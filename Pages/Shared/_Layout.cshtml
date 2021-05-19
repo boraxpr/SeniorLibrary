@@ -22,6 +22,7 @@
     <title>@ViewData["Title"] - SeniorLibrary</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/uicons-regular-rounded.css" rel="stylesheet">
 </head>
 <body class="jumbotron-fluid jumbotron">
     
@@ -29,7 +30,7 @@
             <source src="~/video/library.mp4" type="video/mp4">
         </video>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-3 fixed-top">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-4 fixed-top">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Requests/Index">SeniorLibrary</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -39,55 +40,56 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index"><i class="fi-rr-home"></i>Home</a>
                         </li>
                         @* TEST
-                                <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Test/Index">Test</a>
-                            </li>
+            <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-page="/Test/Index">Test</a>
+        </li>
                         *@
 
                         @if (User.Identity.IsAuthenticated)
                         {
+                            
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Requests/Index">Request book</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Requests/Index"><i class="fi-rr-document-signed"></i>Request book</a>
                             </li>
                             <li class="nav-item">
-                                <a href="http://localhost:8383/greenstone3/library/collection/"><img src="~/images/search.png" style="width:24px;height:24px;"></a>
+                                <a class="nav-link text-dark" href="http://localhost:8383/greenstone3/library/collection/"><i class="fi-rr-search"></i>Browse</a>
                             </li>
 
                         }
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Roles/Index">Roles</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Roles/Index"><i class="fi-rr-user"></i>Roles</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/UserRoles/Index">Users</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/UserRoles/Index"><i class="fi-rr-users"></i>Users</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Upload/Index">Upload</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Upload/Index"><i class="fi-rr-cloud-upload"></i>Upload</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Download/Index">Download</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Download/Index"><i class="fi-rr-cloud-download"></i>Download</a>
                             </li>
                         }
                         @if (User.IsInRole("Lecturer"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Upload/Index">Upload</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Upload/Index"><i class="fi-rr-cloud-upload"></i>Upload</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Download/Index">Download</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Download/Index"><i class="fi-rr-cloud-download"></i>Download</a>
                             </li>
                         }
                         @if (User.IsInRole("Staff"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Upload/Index">Upload</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Upload/Index"><i class="fi-rr-cloud-upload"></i>Upload</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Download/Index">Download</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Download/Index"><i class="fi-rr-cloud-download"></i>Download</a>
                             </li>
 
                         }
