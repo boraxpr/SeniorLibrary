@@ -76,6 +76,7 @@ namespace SeniorLibrary.Migrations
                     SubmittorEmail = table.Column<string>(nullable: true),
                     ProjectName = table.Column<string>(nullable: true),
                     BookAdvisor = table.Column<string>(nullable: true),
+                    Downloadable = table.Column<bool>(nullable: false),
                     SubmittedDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>

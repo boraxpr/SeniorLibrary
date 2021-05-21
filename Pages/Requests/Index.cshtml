@@ -40,41 +40,44 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Entrying)
+            @if (User.IsInRole("Student"))
             {
-                if (User.Identity.Name.Equals(item.SubmittorEmail.Split("@")[0]) || User.IsInRole("Admin"))
+
+            }
+            @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+            {
+                @foreach (var item in Model.Entrying)
                 {
-                    <tr>
-                        <td class="SubmittorEmail">
-                            @Html.DisplayFor(modelItem => item.SubmittorEmail)
-                        </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ProjectName)
-                        </td>
+                        <tr>
+                            <td class="SubmittorEmail">
+                                @Html.DisplayFor(modelItem => item.SubmittorEmail)
+                            </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.BookAdvisor)
-                        </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProjectName)
+                            </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SubmittedDate)
-                        </td>
-                        <td>
-                            <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                            <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                            <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a> |
-                            @if (User.IsInRole("Student"))
-                            {
-                                <a asp-page="./Download" asp-route-id="@item.ID">Download |</a> 
-                            } 
-                            @if (User.IsInRole("Lecturer"))
-                            {
-                                <a asp-page="./Delete" asp-route-id="@item.ID">Approve |</a> 
-                            } 
-                        </td>
-                    </tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BookAdvisor)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SubmittedDate)
+                            </td>
+                            <td>
+                                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a> |
+                                <a asp-page="./Download" asp-route-id="@item.ID">Download |</a>
+                                <a asp-page="./Delete" asp-route-id="@item.ID">Approve |</a>
+                            </td>
+                        </tr>
                 }
+            }
+            @if (User.IsInRole("Lecturer"))
+            {
+
             }
         </tbody>
     </table>

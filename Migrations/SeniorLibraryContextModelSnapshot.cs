@@ -254,6 +254,9 @@ namespace SeniorLibrary.Migrations
                     b.Property<string>("BookAdvisor")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<bool>("Downloadable")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("ProjectName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 

@@ -9,7 +9,7 @@ using SeniorLibrary.Data;
 namespace SeniorLibrary.Migrations
 {
     [DbContext(typeof(SeniorLibraryContext))]
-    [Migration("20210512092420_init")]
+    [Migration("20210521120412_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -255,6 +255,9 @@ namespace SeniorLibrary.Migrations
 
                     b.Property<string>("BookAdvisor")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool>("Downloadable")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ProjectName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
