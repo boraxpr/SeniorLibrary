@@ -12,7 +12,7 @@
 <h1 style="text-align :center">Book request</h1>
 <p style="text-align : right">
     <a asp-page="Create" 
-       style="background-color: #EEEEEE; 
+       style="background-color: khaki; 
      padding: 8px 20px; 
      text-decoration: none; 
      font-weight: bold; 
@@ -42,13 +42,101 @@
         <tbody>
             @if (User.IsInRole("Student"))
             {
+                @foreach (var item in Model.Entrying)
+                {
+                    // show entry if entry is owned by user 
+                    @if (User.Identity.Name.Equals(item.SubmittorEmail.Split("@")[0]))
+                    {
+                        <tr>
+                            <td class="SubmittorEmail">
+                                @Html.DisplayFor(modelItem => item.SubmittorEmail)
+                            </td>
 
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProjectName)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BookAdvisor)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SubmittedDate)
+                            </td>
+                            <td>
+                                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a> 
+
+                                @if (!item.Downloadable.Equals(true))
+                                {
+                                    <strong style="color:red">| No approval</strong>
+                                }
+                                else
+                                {
+                                    // Prototype for Student
+                                    <a asp-page="./Download" 
+                                       style="background-color:green; 
+                                    padding: 8px 20px; 
+                                    text-decoration: none; 
+                                    color:white;
+                                    font-weight: bold; 
+                                    border-radius: 5px; 
+                                    cursor: pointer;" asp-route-id="@item.ID">
+                                    Download </a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
             }
             @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
             {
                 @foreach (var item in Model.Entrying)
                 {
+                    <tr>
+                        <td class="SubmittorEmail">
+                            @Html.DisplayFor(modelItem => item.SubmittorEmail)
+                        </td>
 
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProjectName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BookAdvisor)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SubmittedDate)
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a> |
+
+                            @if (!item.Downloadable.Equals(true))
+                            {
+                                <a asp-page="./Approve" asp-route-id="@item.ID">Approve </a>
+                            }
+                            else
+                            {
+                                // Prototype for Student
+                                <a asp-page="./Download" asp-route-id="@item.ID">Download </a>
+                                // Prototype for Lecturer
+                                <strong style="color:black">| Approved</strong>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+            @if (User.IsInRole("Lecturer"))
+            {
+                @foreach (var item in Model.Entrying)
+                {
+                    //show entry if Entrying's Book advisor contains this Lecturer name
+                    @if (User.Identity.Name.Contains(item.BookAdvisor))
+                    {
                         <tr>
                             <td class="SubmittorEmail">
                                 @Html.DisplayFor(modelItem => item.SubmittorEmail)
@@ -69,15 +157,18 @@
                                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
                                 <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a> |
-                                <a asp-page="./Download" asp-route-id="@item.ID">Download </a>|
-                                <a asp-page="./Approve" asp-route-id="@item.ID">Approve </a>
+                                @if (!item.Downloadable.Equals(true))
+                                {
+                                    <a asp-page="./Approve" asp-route-id="@item.ID">Approve </a>
+                                }
+                                else
+                                {
+                                    <strong style="color:black">| Approved</strong>
+                                }
                             </td>
                         </tr>
+                    }
                 }
-            }
-            @if (User.IsInRole("Lecturer"))
-            {
-
             }
         </tbody>
     </table>
