@@ -41,6 +41,10 @@ namespace SeniorLibrary.Pages.Upload
                     book.Name = fileName;
                     book.CreatedOn = DateTime.Now;
                     book.Advisor = Book.Advisor;
+                    if (_context.Book.Any(info => info.Name == book.Name))
+                    {
+                        return RedirectToPage("./Index", new { msg = "error" });
+                    }
                     using (var target = new MemoryStream())
                     {
                         files.CopyTo(target);
