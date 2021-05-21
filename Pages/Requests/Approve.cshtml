@@ -1,0 +1,44 @@
+﻿@page
+@model SeniorLibrary.Pages.Requests.ApproveModel
+@{
+    ViewData["Title"] = "Approve";
+}
+<h1>Approve</h1>
+
+<h3>Are you sure you want to approve this?</h3>
+<div>
+    <h4>Download approve</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Entrying.SubmittorEmail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Entrying.SubmittorEmail)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Entrying.ProjectName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Entrying.ProjectName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Entrying.BookAdvisor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Entrying.BookAdvisor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Entrying.SubmittedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Entrying.SubmittedDate)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Entrying.ID" />
+        <input type="submit" value="Approve" class="btn btn-warning" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

@@ -27,15 +27,18 @@ namespace SeniorLibrary.Pages.Requests
 
         [BindProperty]
         public Book Book { get; set; }
-
+        public Entrying Entrying { get; set; }
+        //id sent from request index is an entry id !!
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
-            Book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
+            // get entry by using id sent from request index
+            Entrying = await _context.Entrying.FirstOrDefaultAsync(m => m.ID == id);
+            // book need to be found by name in entrying
+            Book = await _context.Book.FirstOrDefaultAsync(m => m.Name.Contains(Entrying.ProjectName));
 
             if (Book == null)
             {
@@ -50,8 +53,10 @@ namespace SeniorLibrary.Pages.Requests
             {
                 return NotFound();
             }
-
-            Book = await _context.Book.FindAsync(id);
+            // get entry by using id sent from request index
+            Entrying = await _context.Entrying.FirstOrDefaultAsync(m => m.ID == id);
+            // book need to be found by name in entrying
+            Book = await _context.Book.FirstOrDefaultAsync(m => m.Name.Contains(Entrying.ProjectName));
 
             if (Book != null)
             {
