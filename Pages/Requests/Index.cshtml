@@ -135,7 +135,7 @@
                 @foreach (var item in Model.Entrying)
                 {
                     //show entry if Entrying's Book advisor contains this Lecturer name
-                    @if (User.Identity.Name.Contains(item.BookAdvisor))
+                    @if (User.Identity.Name.ToLower().Contains(item.BookAdvisor.ToLower()))
                     {
                         <tr>
                             <td class="SubmittorEmail">
