@@ -42,7 +42,6 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="Pages\Stat\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
