@@ -21,6 +21,8 @@ SeniorLibrary\users.json
 *    Nohrarit Saengsukhiran
 *    Katesudarad Saikate
 ## Senior Project Library Website for Senior Project Digital Library System
+#### ER-diagram reverse-engineered from the current state of the data context in MYSQLDB
+![alt_text](https://raw.githubusercontent.com/boraxpr/SeniorLibrary/main/pics/reversed%20engineered%20from%20the%20current%20mysqlDB.png)
 #### /Identity/Account/Login
 ![alt text](https://raw.githubusercontent.com/boraxpr/SeniorLibrary/main/Log%20in.png)
 
