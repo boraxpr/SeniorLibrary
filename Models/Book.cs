@@ -14,7 +14,8 @@ namespace SeniorLibrary.Models
         public string Name { get; set; }
         public byte[] DataFiles { get; set; }
         public DateTime CreatedOn { get; set; }
-        // For ROLE Lecturer to filter out entries in Pages/Requests/Index
+        // For ROLE Lecturer to filter out entries in Pages/Requests/Index.cshtml
+        // The filter logic is in view (cshtml.cs) Pages/Requests/Index.cshtml
         public string Advisor { get; set; }
         // Tracking download count
         public int downloadCount { get; set; }
