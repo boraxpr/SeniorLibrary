@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace SeniorLibrary.Models
 {
+    //IdentityUser is aspNet default user
+    //Because Aj. requested these attributes so ApplicationUser extends from IdentityUser
     public class ApplicationUser : IdentityUser
     {
         public string FirstName { get; set; }

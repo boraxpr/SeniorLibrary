@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace SeniorLibrary.Models
 {
+    //Used in Pages/UserRoles
     public class UserRolesViewModel
     {
         public string UserId { get; set; }
