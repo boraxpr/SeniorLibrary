@@ -209,3 +209,4 @@ C:\Users\tata-\SeniorLibrary\obj\Debug\net5.0\SeniorLibrary.genruntimeconfig.cac
 C:\Users\tata-\SeniorLibrary\obj\Debug\net5.0\Razor\Pages\Requests\Download.cshtml.g.cs
 C:\Users\tata-\SeniorLibrary\obj\Debug\net5.0\Razor\Pages\Requests\Approve.cshtml.g.cs
 C:\Users\tata-\SeniorLibrary\obj\Debug\net5.0\Razor\Pages\Stats\Index.cshtml.g.cs
+C:\Users\tata-\SeniorLibrary\bin\Debug\net5.0\web.config

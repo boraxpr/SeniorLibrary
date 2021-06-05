@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MySql.Data.MySqlClient;
 using SeniorLibrary.Models;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace SeniorLibrary
 {
@@ -40,6 +41,12 @@ namespace SeniorLibrary
                .AddDefaultTokenProviders();
             services.AddRazorPages();
             services.AddHttpContextAccessor();
+            services.Configure<FormOptions>(x =>
+            {
+                x.ValueLengthLimit = int.MaxValue;
+                x.MultipartBodyLengthLimit = int.MaxValue;
+                x.MultipartHeadersLengthLimit = int.MaxValue;
+            });
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.
