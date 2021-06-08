@@ -14,8 +14,12 @@
         left: 0;
         overflow : hidden;
     }
+    body {
+        background-image: url(/images/libraryv2.jpg);
+    }
 </style>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,9 +30,7 @@
 </head>
 <body class="jumbotron-fluid jumbotron">
     
-    <video autoplay muted loop poster="">
-            <source src="~/video/library.mp4" type="video/mp4">
-        </video>
+    
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-4 fixed-top">
             <div class="container">
@@ -130,7 +132,7 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-<script>
+@*<script>
     function backgroundVideo() {
 
         $("video source").each(function () {
@@ -142,4 +144,4 @@
 
     }
     window.onload = backgroundVideo;
-</script>
+</script>*@
