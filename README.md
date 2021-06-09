@@ -1,3 +1,4 @@
+For maintainer -> Learn more : https://github.com/boraxpr/SeniorLibrary/wiki/
 # SeniorLibrary
 Required .NET Core, MySQL Community(Preferred)
 Create a root user password=6501. 
